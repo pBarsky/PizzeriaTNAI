@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaTNAI.UI", "PizzeriaTNAI.UI\PizzeriaTNAI.UI.csproj", "{4861535A-F25C-4FEB-8659-B85AFF980552}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4861535A-F25C-4FEB-8659-B85AFF980552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4861535A-F25C-4FEB-8659-B85AFF980552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4861535A-F25C-4FEB-8659-B85AFF980552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4861535A-F25C-4FEB-8659-B85AFF980552}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {846C5F6C-6433-4263-8662-5672151D764C}
+	EndGlobalSection
+EndGlobal

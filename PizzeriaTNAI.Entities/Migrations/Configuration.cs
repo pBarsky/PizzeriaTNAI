@@ -1,3 +1,6 @@
+using PizzeriaTNAI.Entities.Models;
+using PizzeriaTNAI.UI.Models;
+
 namespace PizzeriaTNAI.Entities.Migrations
 {
     using System;
@@ -14,10 +17,26 @@ namespace PizzeriaTNAI.Entities.Migrations
 
         protected override void Seed(PizzeriaTNAI.Entities.AppDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (context.Products.Any()) return;
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            var hawajska = new Product
+            {
+                Name = "Pizza Hawajska",
+                Price = 25m,
+                Description = "Pizza z ananasem i szynk¹",
+                PictureUrl = "https://www.lifeandmore.pl/files/Image/smakiswiata/pizza_hawajska.jpg"
+            };
+            var pepperoni = new Product
+            {
+                Name = "Pizza Pepperoni",
+                Price = 26.50m,
+                Description = "Pizza z pepperoni i cebul¹",
+                PictureUrl = "https://thumbs.dreamstime.com/z/pepperoni-pizza-30402134.jpg"
+            };
+
+            context.Products.Add(hawajska);
+            context.Products.Add(pepperoni);
+            context.SaveChanges();
         }
     }
 }

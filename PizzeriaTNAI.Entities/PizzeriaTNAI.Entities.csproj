@@ -66,6 +66,10 @@
     <Compile Include="Migrations\202006221110235_zmiany.designer.cs">
       <DependentUpon>202006221110235_zmiany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006221210248_kaskadowanko.cs" />
+    <Compile Include="Migrations\202006221210248_kaskadowanko.designer.cs">
+      <DependentUpon>202006221210248_kaskadowanko.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserAddressData.cs" />
     <Compile Include="Models\BasketEntry.cs" />
@@ -81,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006221110235_zmiany.resx">
       <DependentUpon>202006221110235_zmiany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006221210248_kaskadowanko.resx">
+      <DependentUpon>202006221210248_kaskadowanko.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

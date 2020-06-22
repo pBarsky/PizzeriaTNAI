@@ -23,12 +23,12 @@ namespace BusinessLogic.Services.SOrder
             SessionMenager = new SessionManager();
             _basketMenager = new BasketService(SessionMenager, productRepository);
         }
-        public Order CreateOrder(Order newOrder, string userId)
+        public bool SaveOrder(Order newOrder, string userId)
         {
             var basket = _basketMenager.GetBasket();
             newOrder.DateOfCreation = DateTime.Now;
             newOrder.UserId = userId;
-            var result = Task.Run(() => _orderRepository.SaveOrderAsync(newOrder)).Result;
+
             if (newOrder.Items == null)
             {
                 newOrder.Items = new List<OrderItem>();
@@ -48,7 +48,8 @@ namespace BusinessLogic.Services.SOrder
             }
             newOrder.OverallPrice = basketValue;
 
-            return newOrder;
+            var result = Task.Run(() => _orderRepository.SaveOrderAsync(newOrder)).Result;
+            return result;
         }
 
         public Task<Order> GetOrderAsync(int id)

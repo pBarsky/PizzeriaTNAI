@@ -8,7 +8,7 @@ namespace BusinessLogic.Services.SOrder
     public interface IOrderService
     {
         SessionManager SessionMenager { get; }
-        Order CreateOrder(Order newOrder, string userId);
+        bool SaveOrder(Order newOrder, string userId);
         Task<Order> GetOrderAsync(int id);
         Task<List<Order>> GetOrdersAsync();
         Task<bool> SaveOrderAsync(Order order);

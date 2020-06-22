@@ -81,7 +81,7 @@ namespace PizzeriaTNAI.UI.Controllers
             if (Request.IsAuthenticated)
             {
                 var userId = User.Identity.GetUserId();
-                var newOrder = _orderService.CreateOrder(orderDetails, userId);
+                var orderStatus = _orderService.SaveOrder(orderDetails, userId);
                 var user = await UserManager.FindByIdAsync(userId);
                 TryUpdateModel(user.AddressData);
                 await UserManager.UpdateAsync(user);

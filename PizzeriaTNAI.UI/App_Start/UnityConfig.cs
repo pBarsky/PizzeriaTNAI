@@ -2,6 +2,7 @@ using System;
 using System.Data.Entity;
 using System.Web;
 using BusinessLogic.Services.SOrder;
+using BusinessLogic.Services.SProduct;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -67,6 +68,8 @@ namespace PizzeriaTNAI.UI
             container.RegisterType<ISessionManager, SessionManager>();
             container.RegisterType<IBasketService, BasketService>();
             container.RegisterType<IOrderService, OrderService>();
+            container.RegisterType<IProductService, ProductService>();
+
 
         }
     }

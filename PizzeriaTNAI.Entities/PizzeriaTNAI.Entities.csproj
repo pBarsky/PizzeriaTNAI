@@ -66,6 +66,10 @@
     <Compile Include="Migrations\202006201634235_identityAndProduct.Designer.cs">
       <DependentUpon>202006201634235_identityAndProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006220057400_poprawki.cs" />
+    <Compile Include="Migrations\202006220057400_poprawki.designer.cs">
+      <DependentUpon>202006220057400_poprawki.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserAddressData.cs" />
     <Compile Include="Models\BasketEntry.cs" />
@@ -77,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006201634235_identityAndProduct.resx">
       <DependentUpon>202006201634235_identityAndProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006220057400_poprawki.resx">
+      <DependentUpon>202006220057400_poprawki.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

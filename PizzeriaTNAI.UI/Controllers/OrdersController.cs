@@ -19,14 +19,14 @@ using PizzeriaTNAI.Entities.Models;
 
 namespace PizzeriaTNAI.UI.Controllers
 {
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private IBasketService _basketService;
         private SessionManager _sessionMenager;
         private IOrderService _orderService;
 
 
-        public OrderController(IProductRepository productRepository, IOrderRepository orderRepository)
+        public OrdersController(IProductRepository productRepository, IOrderRepository orderRepository)
         {
             _sessionMenager = new SessionManager();
             _basketService = new BasketService(_sessionMenager, productRepository);
@@ -71,7 +71,7 @@ namespace PizzeriaTNAI.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Account", new { returnurl = Url.Action("Pay", "Order") });
+                return RedirectToAction("Login", "Account", new { returnurl = Url.Action("Pay", "Orders") });
             }
         }
 

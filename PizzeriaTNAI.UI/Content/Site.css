@@ -56,3 +56,8 @@ textarea {
 .navbar-inverse .navbar-nav > li > a {
     color: #FFFFFF;
 }
+@media (max-width: 768px) {
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        background-color: #B00020 !important;
+    }
+}

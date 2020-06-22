@@ -25,12 +25,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Menu", "Menu", "Products")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
-                    <div class="basket" style="float: right;">
-                        <a href="@Url.Action("Index","Basket")"  >
-                            <img src="~/Content/Images/Basket.png"/>
-                            <span class="basket-circle" >@Html.Action("GetNumberOfPositionsInBasket", "Basket")</span></a>
-                    </div>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

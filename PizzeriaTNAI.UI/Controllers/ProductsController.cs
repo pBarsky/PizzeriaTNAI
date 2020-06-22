@@ -111,8 +111,8 @@ namespace PizzeriaTNAI.UI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var product = Task.Run(() => _productService.DeleteProductAsync((int)id)).Result;
-            if (product == false)
+            var product = Task.Run(() => _productService.GetProductAsync((int)id)).Result;
+            if (product == null)
             {
                 return HttpNotFound();
             }

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Pay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pay</h2>
+
+@using (Html.BeginForm("Pay", "Order"))
+{
+    @Html.EditorFor(a => a)
+
+
+    @Html.ValidationSummary()
+    <div>
+        <a href="">back</a>
+        <input type="submit" value="Submit" />
+    </div>
+}

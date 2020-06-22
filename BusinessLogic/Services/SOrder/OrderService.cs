@@ -51,22 +51,22 @@ namespace BusinessLogic.Services.SOrder
             return newOrder;
         }
 
-        Task<Order> GetOrderAsync(int id)
+        public Task<Order> GetOrderAsync(int id)
         {
             return _orderRepository.GetOrderAsync(id);
         }
 
-        Task<List<Order>> GetOrdersAsync()
+        public Task<List<Order>> GetOrdersAsync()
         {
             return _orderRepository.GetOrdersAsync();
         }
 
-        Task<bool> SaveOrderAsync(Order order)
+        public Task<bool> SaveOrderAsync(Order order)
         {
             return _orderRepository.SaveOrderAsync(order);
         }
 
-        Task<bool> DeleteOrderAsync(int id)
+        public Task<bool> DeleteOrderAsync(int id)
         {
             return _orderRepository.DeleteOrderAsync(id);
         }

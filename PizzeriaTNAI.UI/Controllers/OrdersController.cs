@@ -19,97 +19,97 @@ using PizzeriaTNAI.Entities.Models;
 
 namespace PizzeriaTNAI.UI.Controllers
 {
-    //public class OrderController : Controller
-    //{
-    //    private IBasketService _basketService;
-    //    private SessionManager _sessionMenager;
-    //    private IOrderService _orderService;
+    public class OrderController : Controller
+    {
+        private IBasketService _basketService;
+        private SessionManager _sessionMenager;
+        private IOrderService _orderService;
 
 
-    //    public OrderController(IProductRepository productRepository, IOrderRepository orderRepository)
-    //    {
-    //        _sessionMenager = new SessionManager();
-    //        _basketService = new BasketService(_sessionMenager, productRepository);
-    //        _orderService = new OrderService(orderRepository, productRepository);
-    //    }
+        public OrderController(IProductRepository productRepository, IOrderRepository orderRepository)
+        {
+            _sessionMenager = new SessionManager();
+            _basketService = new BasketService(_sessionMenager, productRepository);
+            _orderService = new OrderService(orderRepository, productRepository);
+        }
 
 
-    //    public ActionResult Index()
-    //    {
-    //        var list = db.Orders.OrderByDescending(x => x.OrderId).ToList();
-    //        return View(list);
-    //    }
+        public ActionResult Index()
+        {
+            var list = Task.Run(() => _orderService.GetOrdersAsync()).Result;
+            return View(list);
+        }
 
-    //    public ActionResult Details(int? id)
-    //    {
-    //        if (id == null)
-    //        {
-    //            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-    //        }
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-    //        var order = db.Orders.Find(id);
-    //        if (order == null)
-    //        {
-    //            return HttpNotFound();
-    //        }
-    //        return View(order);
-    //    }
+            var order = Task.Run(() => _orderService.GetOrderAsync((int)id)).Result;
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
 
-    //    public async Task<ActionResult> Pay()
-    //    {
-    //        if (Request.IsAuthenticated)
-    //        {
-    //            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+        public async Task<ActionResult> Pay()
+        {
+            if (Request.IsAuthenticated)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
-    //            var order = new Order
-    //            {
-    //                Address = user.AddressData.Address,
-    //                City = user.AddressData.City,
-    //                ZipCode = user.AddressData.ZipCode
-    //            };
-    //            return View(order);
-    //        }
-    //        else
-    //        {
-    //            return RedirectToAction("Login", "Account", new { returnurl = Url.Action("Pay", "Order") });
-    //        }
-    //    }
+                var order = new Order
+                {
+                    Address = user.AddressData.Address,
+                    City = user.AddressData.City,
+                    ZipCode = user.AddressData.ZipCode
+                };
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account", new { returnurl = Url.Action("Pay", "Order") });
+            }
+        }
 
-    //    [HttpPost]
-    //    public async Task<ActionResult> Pay(Order orderDetails)
-    //    {
-    //        if (Request.IsAuthenticated)
-    //        {
-    //            var userId = User.Identity.GetUserId();
-    //            var newOrder = orderManager.CreateOrder(orderDetails, userId);
-    //            var user = await UserManager.FindByIdAsync(userId);
-    //            TryUpdateModel(user.UserData);
-    //            await UserManager.UpdateAsync(user);
-    //            _basketMenager.EmptyBasket();
-    //            return RedirectToAction("OrderConfirm");
-    //        }
-    //        else
-    //        {
-    //            return View(orderDetails);
-    //        }
-    //    }
+        [HttpPost]
+        public async Task<ActionResult> Pay(Order orderDetails)
+        {
+            if (Request.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                var newOrder = _orderService.CreateOrder(orderDetails, userId);
+                var user = await UserManager.FindByIdAsync(userId);
+                TryUpdateModel(user.AddressData);
+                await UserManager.UpdateAsync(user);
+                _basketService.EmptyBasket();
+                return RedirectToAction("OrderConfirm");
+            }
+            else
+            {
+                return View(orderDetails);
+            }
+        }
 
-    //    public ActionResult OrderConfirm()
-    //    {
-    //        return View();
-    //    }
+        public ActionResult OrderConfirm()
+        {
+            return View();
+        }
 
-    //    private ApplicationUserManager _userManager;
-    //    public ApplicationUserManager UserManager
-    //    {
-    //        get
-    //        {
-    //            return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-    //        }
-    //        private set
-    //        {
-    //            _userManager = value;
-    //        }
-    //    }
-    //}
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+    }
 }

@@ -40,11 +40,12 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
             return true;
         }
 
-        public async Task<bool> DeleteOrderAsync(Order Order)
+        public async Task<bool> DeleteOrderAsync(int id)
         {
-            if (Order == null)
+            var order = await GetOrderAsync(id);
+            if (order == null)
                 return false;
-            Context.Orders.Remove(Order);
+            Context.Orders.Remove(order);
 
             try
             {

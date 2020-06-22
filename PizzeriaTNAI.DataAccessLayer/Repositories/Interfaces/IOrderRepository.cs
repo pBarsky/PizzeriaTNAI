@@ -12,6 +12,6 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Interfaces
         Task<Order> GetOrderAsync(int id);
         Task<List<Order>> GetOrdersAsync();
         Task<bool> SaveOrderAsync(Order order);
-        Task<bool> DeleteOrderAsync(Order order);
+        Task<bool> DeleteOrderAsync(int id);
     }
 }

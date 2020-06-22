@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PizzeriaTNAI.Entities.Models;
 
-namespace PizzeriaTNAI.DataAccessLayer.Repositories.Interfaces
+namespace BusinessLogic.Services.SProduct
 {
-    public interface IProductRepository
+    public interface IProductService
     {
         Task<Product> GetProductAsync(int id);
         Task<List<Product>> GetProductsAsync();

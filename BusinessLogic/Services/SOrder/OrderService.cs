@@ -51,9 +51,26 @@ namespace BusinessLogic.Services.SOrder
             return newOrder;
         }
 
-        public List<Order> ListOrdersForUser()
+        Task<Order> GetOrderAsync(int id)
         {
-            db.Orders.OrderByDescending(x => x.OrderId).ToList();
+            return _orderRepository.GetOrderAsync(id);
         }
+
+        Task<List<Order>> GetOrdersAsync()
+        {
+            return _orderRepository.GetOrdersAsync();
+        }
+
+        Task<bool> SaveOrderAsync(Order order)
+        {
+            return _orderRepository.SaveOrderAsync(order);
+        }
+
+        Task<bool> DeleteOrderAsync(int id)
+        {
+            return _orderRepository.DeleteOrderAsync(id);
+        }
+
+
     }
 }

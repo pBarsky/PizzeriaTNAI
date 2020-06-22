@@ -39,8 +39,9 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
             return true;
         }
 
-        public async Task<bool> DeleteProductAsync(Product product)
+        public async Task<bool> DeleteProductAsync(int id)
         {
+            var product = await GetProductAsync(id);
             if (product == null)
                 return false;
             Context.Products.Remove(product);

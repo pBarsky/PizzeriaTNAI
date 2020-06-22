@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -47,6 +50,8 @@
     <Compile Include="Services\SBasket\IBasketService.cs" />
     <Compile Include="Services\SOrder\IOrderService.cs" />
     <Compile Include="Services\SOrder\OrderService.cs" />
+    <Compile Include="Services\SProduct\IProductService.cs" />
+    <Compile Include="Services\SProduct\ProductService.cs" />
     <Compile Include="Session\ISessionManager.cs" />
     <Compile Include="Session\SessionManager.cs" />
   </ItemGroup>
@@ -59,6 +64,9 @@
       <Project>{fc1c5cf5-f6af-437b-a655-9a5334488be7}</Project>
       <Name>PizzeriaTNAI.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

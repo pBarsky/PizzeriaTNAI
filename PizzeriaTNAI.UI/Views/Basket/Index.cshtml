@@ -1,0 +1,62 @@
+﻿@model PizzeriaTNAI.UI.ViewModels.BasketViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<section>
+    <div>
+        <h2>BasketItem</h2>
+    </div>
+    <table>
+        @if (Model.BasketItems != null && Model.BasketItems.Count > 0)
+        {
+            foreach (var basketItem in Model.BasketItems)
+            {
+                <tr id="BasketLine-@basketItem.Product.ProductId">
+
+                    <td>
+                        @basketItem.Product.Name
+                    </td>
+                    <td>
+                        Ilość: <span id="@basketItem.Product.ProductId">@basketItem.Amount</span>
+                    </td>
+                    <td>
+                        <img class="pizza-img" src="~/Content/Images/@basketItem.Product.PictureUrl" />
+                    </td>
+                    <td>
+                        @String.Format("{0:0.##}", basketItem.Price) zł
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("RemoveFromBasket", "Basket"))
+                        {
+                            @Html.Hidden("ProductId", basketItem.Product.ProductId)
+                            <input class="btn btn-sm btn-warning"
+                                   type="submit" value="Usuń" />
+                        }
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr id="Basket-empty-message">
+                <td>Twój koszyk jest pusty</td>
+            </tr>
+        }
+    </table>
+    <div>
+        Razem <span id="TotalPriceValue">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
+    </div>
+    <div>
+        @if (Model.TotalPrice > 0)
+        {
+            <a class="ShopCardPayButton" href="@Url.Action("Pay", "Order")">Zapłać</a>
+        }
+    </div>
+</section>
+
+}

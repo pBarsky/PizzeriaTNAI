@@ -4,22 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PizzeriaTNAI.BusinessLogic.Services.SBasket;
+using PizzeriaTNAI.BusinessLogic.Session;
 using PizzeriaTNAI.DataAccessLayer.Repositories.Implementations;
 using PizzeriaTNAI.DataAccessLayer.Repositories.Interfaces;
 using PizzeriaTNAI.Entities.Models;
 
 namespace BusinessLogic.Services.SOrder
 {
+
     public class OrderService : IOrderService
     {
         private readonly IBasketService _basketMenager;
-        // private ISessionManager _sessionMenager;
+        public SessionManager SessionMenager { get; }
         private readonly IOrderRepository _orderRepository;
-        public OrderService(IBasketService basketService, IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IProductRepository productRepository)
         {
             _orderRepository = new OrderRepository();
-            // _sessionMenager = session;
-            _basketMenager = basketService;
+            SessionMenager = new SessionManager();
+            _basketMenager = new BasketService(SessionMenager, productRepository);
         }
         public Order CreateOrder(Order newOrder, string userId)
         {
@@ -47,6 +49,11 @@ namespace BusinessLogic.Services.SOrder
             newOrder.OverallPrice = basketValue;
 
             return newOrder;
+        }
+
+        public List<Order> ListOrdersForUser()
+        {
+            db.Orders.OrderByDescending(x => x.OrderId).ToList();
         }
     }
 }

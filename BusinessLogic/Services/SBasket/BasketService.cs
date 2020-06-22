@@ -15,8 +15,8 @@ namespace PizzeriaTNAI.BusinessLogic.Services.SBasket
 
         public BasketService(SessionManager sessionManager, IProductRepository productRepository)
         {
-            this._sessionManager = sessionManager;
-            this._productRepository = productRepository;
+            _sessionManager = sessionManager;
+            _productRepository = productRepository;
         }
 
         public List<BasketEntry> GetBasket()

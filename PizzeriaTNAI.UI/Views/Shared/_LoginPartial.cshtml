@@ -6,9 +6,9 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <div class="basket" style="float: right;">
+            <div class="basket" >
                 <a href="@Url.Action("Index","Basket")">
-                    <img src="~/Content/Images/Basket.png" />
+                    <img  class="basket-img" src="~/Content/Images/Basket.png" />
                     <span class="basket-circle">@Html.Action("GetNumberOfPositionsInBasket", "Basket")</span>
                 </a>
             </div>
@@ -24,7 +24,7 @@ else
     <ul class="nav navbar-nav navbar-right">
         <div class="basket" style="float: right;">
             <a href="@Url.Action("Index","Basket")">
-                <img src="~/Content/Images/Basket.png" />
+                <img class="basket-img" src="~/Content/Images/Basket.png" />
                 <span class="basket-circle">@Html.Action("GetNumberOfPositionsInBasket", "Basket")</span>
             </a>
         </div>

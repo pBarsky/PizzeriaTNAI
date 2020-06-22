@@ -36,3 +36,22 @@ textarea {
     left: 25px;
     text-align: center;
 }
+
+.pizza-orders-details {
+    text-align: center;
+}
+.basket-img {
+    width: 50px;
+    height: 50px;
+}
+.navbar-inverse {
+    background-color: #4a26fd !important;
+    height: 20px
+}
+
+.basket {
+    float: right;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
+}

@@ -9,25 +9,26 @@ using PizzeriaTNAI.Entities.Models;
 
 namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
 {
-    public class ProductRepository : BaseRepository, IProductRepository
+
+    public class OrderRepository : BaseRepository, IOrderRepository
     {
-        public async Task<Product> GetProductAsync(int id)
+        public async Task<Order> GetOrderAsync(int id)
         {
-            return await Context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+            return await Context.Orders.FirstOrDefaultAsync(x => x.OrderId == id);
         }
 
-        public async Task<List<Product>> GetProductsAsync()
+        public async Task<List<Order>> GetOrdersAsync()
         {
-            return await Context.Products.ToListAsync();
+            return await Context.Orders.ToListAsync();
         }
 
-        public async Task<bool> SaveProductAsync(Product product)
+        public async Task<bool> SaveOrderAsync(Order Order)
         {
-            if (product == null)
+            if (Order == null)
                 return false;
             try
             {
-                Context.Entry(product).State = product.ProductId == default(int) ? EntityState.Added : EntityState.Modified;
+                Context.Entry(Order).State = Order.OrderId == default(int) ? EntityState.Added : EntityState.Modified;
                 await Context.SaveChangesAsync();
 
             }
@@ -39,11 +40,11 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
             return true;
         }
 
-        public async Task<bool> DeleteProductAsync(Product product)
+        public async Task<bool> DeleteOrderAsync(Order Order)
         {
-            if (product == null)
+            if (Order == null)
                 return false;
-            Context.Products.Remove(product);
+            Context.Orders.Remove(Order);
 
             try
             {
@@ -58,3 +59,4 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
         }
     }
 }
+

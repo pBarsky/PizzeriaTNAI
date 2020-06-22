@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaTNAI.DataAccessLaye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaTNAI.Entities", "PizzeriaTNAI.Entities\PizzeriaTNAI.Entities.csproj", "{FC1C5CF5-F6AF-437B-A655-9A5334488BE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaTNAI.BusinessLogicLayer", "BusinessLogic\PizzeriaTNAI.BusinessLogicLayer.csproj", "{8191F7AE-1182-404C-909D-8CAF6EADB3BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FC1C5CF5-F6AF-437B-A655-9A5334488BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC1C5CF5-F6AF-437B-A655-9A5334488BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC1C5CF5-F6AF-437B-A655-9A5334488BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8191F7AE-1182-404C-909D-8CAF6EADB3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8191F7AE-1182-404C-909D-8CAF6EADB3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8191F7AE-1182-404C-909D-8CAF6EADB3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8191F7AE-1182-404C-909D-8CAF6EADB3BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

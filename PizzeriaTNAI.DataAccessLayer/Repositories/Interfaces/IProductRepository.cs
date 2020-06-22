@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using PizzeriaTNAI.Entities.Models;
 
-namespace PizzeriaTNAI.DataAccessLayer.Repositories.Interface
+namespace PizzeriaTNAI.DataAccessLayer.Repositories.Interfaces
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
         Task<Product> GetProductAsync(int id);
         Task<List<Product>> GetProductsAsync();

@@ -14,6 +14,7 @@ namespace PizzeriaTNAI.Entities
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public AppDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -24,6 +25,7 @@ namespace PizzeriaTNAI.Entities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ProductConfiguration());
+            modelBuilder.Configurations.Add(new OrderConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

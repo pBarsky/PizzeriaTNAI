@@ -22,4 +22,7 @@
     left: 25px;
     text-align: center;
 }
+.order-details-table th, td{
+    padding: 0 15px ;
+}
 

@@ -36,20 +36,30 @@
         </dd>
 
     </dl>
-    <table>
+    <table class="order-details-table">
 
         @if (Model.Items != null)
         {
-
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Items.FirstOrDefault().Product.Name)</th>
+                <th>@Html.DisplayNameFor(x => x.Items.FirstOrDefault().Amount)</th>
+                <th>@Html.DisplayNameFor(x => x.Items.FirstOrDefault().Price)</th>
+            </tr>
 
             foreach (var item in Model.Items)
             {
+
                 <tr>
                     <td> @item.Product.Name</td>
                     <td> @item.Amount</td>
-                    <td> @item.Price</td>
+                    <td> @(item.Price * item.Amount)</td>
                 </tr>
             }
+            <tr>
+                <td></td>
+                <td>@Model.Items.Sum(x => x.Amount)</td>
+                <td>@Model.Items.Sum(x => x.Price * x.Amount)</td>
+            </tr>
         }
 
     </table>

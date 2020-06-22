@@ -7,13 +7,13 @@ namespace PizzeriaTNAI.Entities.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class kaskadowanko : IMigrationMetadata
+    public sealed partial class go : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(kaskadowanko));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(go));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006221210248_kaskadowanko"; }
+            get { return "202006221300181_go"; }
         }
         
         string IMigrationMetadata.Source

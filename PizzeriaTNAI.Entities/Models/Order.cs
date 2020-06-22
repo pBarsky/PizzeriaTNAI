@@ -30,6 +30,6 @@ namespace PizzeriaTNAI.Entities.Models
         public decimal OverallPrice { get; set; }
 
         [ScaffoldColumn(false)]
-        public ICollection<OrderItem> Items { get; set; }
+        public virtual ICollection<OrderItem> Items { get; set; }
     }
 }

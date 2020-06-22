@@ -62,13 +62,9 @@
     <Compile Include="Configurations\OrderConfiguration.cs" />
     <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
-    <Compile Include="Migrations\202006221110235_zmiany.cs" />
-    <Compile Include="Migrations\202006221110235_zmiany.designer.cs">
-      <DependentUpon>202006221110235_zmiany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006221210248_kaskadowanko.cs" />
-    <Compile Include="Migrations\202006221210248_kaskadowanko.designer.cs">
-      <DependentUpon>202006221210248_kaskadowanko.cs</DependentUpon>
+    <Compile Include="Migrations\202006221300181_go.cs" />
+    <Compile Include="Migrations\202006221300181_go.designer.cs">
+      <DependentUpon>202006221300181_go.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserAddressData.cs" />
@@ -83,11 +79,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006221110235_zmiany.resx">
-      <DependentUpon>202006221110235_zmiany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006221210248_kaskadowanko.resx">
-      <DependentUpon>202006221210248_kaskadowanko.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006221300181_go.resx">
+      <DependentUpon>202006221300181_go.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

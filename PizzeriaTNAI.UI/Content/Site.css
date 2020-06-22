@@ -45,7 +45,8 @@ textarea {
     height: 50px;
 }
 .navbar-inverse {
-    background-color: #4a26fd !important;
+    /* background-color: #4a26fd !important; */
+    background-color: #E3121D!important;
     height: 20px
 }
 

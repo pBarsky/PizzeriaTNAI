@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PizzeriaTNAI.Entities.Models.Product>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Menu</h2>
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <img class="card-img-top w-100 d-block pizza-img" src="@item.PictureUrl">
+                <div class="card-body">
+                    <h4 class="card-title">@item.Name</h4>
+                    <p class="card-text">@item.Description</p><button class="btn btn-primary" type="button"><a href="@Url.Action("AddToBasket", "Basket", new { id = item.ProductId })" class="w3-button w3-black">Kup Teraz <i class="fa fa-shopping-cart"></i></a></button>
+                    <span class="pizza-price"> cena @item.Price zł</span>
+               
+              
+                </div>
+            
+            </div>
+
+        }
+
+
+    </div>
+</div>
+

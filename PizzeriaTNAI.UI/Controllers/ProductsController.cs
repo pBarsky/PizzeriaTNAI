@@ -26,6 +26,12 @@ namespace PizzeriaTNAI.UI.Controllers
             var products = Task.Run(() => _productService.GetProductsAsync()).Result;
             return View(products);
         }
+        public ActionResult Menu()
+        {
+            var products = Task.Run(() => _productService.GetProductsAsync()).Result;
+            return View(products);
+        }
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)

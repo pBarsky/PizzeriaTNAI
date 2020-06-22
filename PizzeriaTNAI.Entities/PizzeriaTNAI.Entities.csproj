@@ -62,13 +62,9 @@
     <Compile Include="Configurations\OrderConfiguration.cs" />
     <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
-    <Compile Include="Migrations\202006201634235_identityAndProduct.cs" />
-    <Compile Include="Migrations\202006201634235_identityAndProduct.Designer.cs">
-      <DependentUpon>202006201634235_identityAndProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006220057400_poprawki.cs" />
-    <Compile Include="Migrations\202006220057400_poprawki.designer.cs">
-      <DependentUpon>202006220057400_poprawki.cs</DependentUpon>
+    <Compile Include="Migrations\202006221009279_test.cs" />
+    <Compile Include="Migrations\202006221009279_test.designer.cs">
+      <DependentUpon>202006221009279_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserAddressData.cs" />
@@ -79,18 +75,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006201634235_identityAndProduct.resx">
-      <DependentUpon>202006201634235_identityAndProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006220057400_poprawki.resx">
-      <DependentUpon>202006220057400_poprawki.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006221009279_test.resx">
+      <DependentUpon>202006221009279_test.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

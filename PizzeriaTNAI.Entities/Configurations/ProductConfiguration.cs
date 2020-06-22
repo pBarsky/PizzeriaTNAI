@@ -18,6 +18,7 @@ namespace PizzeriaTNAI.Entities.Configurations
             Property(x => x.Description).IsRequired().HasMaxLength(255);
             Property(x => x.Price).IsRequired();
             Property(x => x.PictureUrl).IsRequired();
+            HasMany(x => x.Items).WithRequired(x => x.Product);
         }
     }
 }

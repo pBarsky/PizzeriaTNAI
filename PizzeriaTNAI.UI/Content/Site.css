@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+.pizza-img {
+    height: 250px;
+    width: 230px;
+}
+.basket-circle {
+    display: block;
+    background-color: cornsilk;
+    width: 1em;
+    border-radius: 90px;
+    position: relative;
+    bottom: 38px;
+    left: 25px;
+    text-align: center;
+}

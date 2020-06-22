@@ -21,6 +21,7 @@ namespace PizzeriaTNAI.Entities.Configurations
             Property(x => x.ZipCode).HasMaxLength(255).IsRequired();
             Property(x => x.DateOfCreation).IsRequired();
             HasMany(x => x.Items).WithRequired(x => x.Order);
+            
         }
     }
 }

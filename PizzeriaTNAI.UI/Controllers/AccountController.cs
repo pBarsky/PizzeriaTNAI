@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PizzeriaTNAI.Entities.Models;
 using PizzeriaTNAI.UI.Models;
 
 namespace PizzeriaTNAI.UI.Controllers
@@ -151,7 +152,7 @@ namespace PizzeriaTNAI.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, AddressData = new UserAddressData() };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

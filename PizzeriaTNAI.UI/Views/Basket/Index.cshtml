@@ -24,7 +24,7 @@
                         Ilość: <span id="@basketItem.Product.ProductId">@basketItem.Amount</span>
                     </td>
                     <td>
-                        <img class="pizza-img" src="~/Content/Images/@basketItem.Product.PictureUrl" />
+                        <img class="pizza-img" src="@basketItem.Product.PictureUrl" />
                     </td>
                     <td>
                         @String.Format("{0:0.##}", basketItem.Price) zł

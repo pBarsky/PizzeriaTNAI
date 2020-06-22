@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model IEnumerable<PizzeriaTNAI.UI.Models.Order>
+@model IEnumerable<PizzeriaTNAI.Entities.Models.Order>
 
 @{
     ViewBag.Title = "Index";
@@ -18,10 +18,10 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ZIPCode)
+            @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataAdding)
+            @Html.DisplayNameFor(model => model.DateOfCreation)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OverallPrice)
@@ -29,32 +29,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    if (item.UserId == User.Identity.GetUserId())
+    @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZIPCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAdding)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverallPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new {id = item.OrderId}) |
-            </td>
+        if (item.UserId == User.Identity.GetUserId())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZipCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfCreation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OverallPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                </td>
 
 
-        </tr>
+            </tr>
+        }
     }
-}
 
 </table>

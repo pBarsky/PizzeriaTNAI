@@ -1,4 +1,4 @@
-﻿@model PizzeriaTNAI.UI.Models.Order
+﻿@model PizzeriaTNAI.Entities.Models.Order
 
 @{
     ViewBag.Title = "Details";
@@ -28,21 +28,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ZIPCode)
+            @Html.DisplayNameFor(model => model.ZipCode)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ZIPCode)
+            @Html.DisplayFor(model => model.ZipCode)
         </dd>
 
     </dl>
     <table>
-      
-        @if (Model.OrderItem != null)
+
+        @if (Model.Items != null)
         {
 
 
-            foreach (var item in Model.OrderItem)
+            foreach (var item in Model.Items)
             {
                 <tr>
                     <td> @item.Product.Name</td>
@@ -51,7 +51,7 @@
                 </tr>
             }
         }
-        
+
     </table>
 </div>
 <p>

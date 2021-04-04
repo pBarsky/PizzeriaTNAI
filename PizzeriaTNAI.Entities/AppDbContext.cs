@@ -13,7 +13,7 @@ namespace PizzeriaTNAI.Entities
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AppDbContext() : base("DefaultConnection", throwIfV1Schema: false)
+        public AppDbContext() : base("AzureDb", throwIfV1Schema: false)
         {
             Configuration.ProxyCreationEnabled = true;
             Configuration.LazyLoadingEnabled = true;

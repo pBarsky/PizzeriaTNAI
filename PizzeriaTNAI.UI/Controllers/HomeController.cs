@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PizzeriaTNAI.UI.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()

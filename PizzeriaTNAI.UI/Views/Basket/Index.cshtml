@@ -4,11 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
 <section>
     <div>
-        <h2>BasketItem</h2>
+        <h2>Basket</h2>
     </div>
     <table>
         @if (Model.BasketItems != null && Model.BasketItems.Count > 0)
@@ -21,7 +19,7 @@
                         @basketItem.Product.Name
                     </td>
                     <td>
-                        Ilość: <span id="@basketItem.Product.ProductId">@basketItem.Amount</span>
+                        Amount: <span id="@basketItem.Product.ProductId">@basketItem.Amount</span>
                     </td>
                     <td>
                         <img class="pizza-img" src="@basketItem.Product.PictureUrl" />
@@ -34,7 +32,7 @@
                         {
                             @Html.Hidden("ProductId", basketItem.Product.ProductId)
                             <input class="btn btn-sm btn-warning"
-                                   type="submit" value="Usuń" />
+                                   type="submit" value="Delete" />
                         }
                     </td>
 
@@ -44,19 +42,21 @@
         else
         {
             <tr id="Basket-empty-message">
-                <td>Twój koszyk jest pusty</td>
+                <td>Your basket is empty </td>
             </tr>
         }
     </table>
     <div>
-        Razem <span id="TotalPriceValue">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
+       
+       
+        To pay  <span id="TotalPriceValue">@String.Format("{0:0.##}", Model.TotalPrice) zł</span>
     </div>
     <div>
         @if (Model.TotalPrice > 0)
         {
-            <a class="ShopCardPayButton" href="@Url.Action("Pay", "Orders")">Zapłać</a>
+            <button class="btn btn-primary" type="button"><a href="@Url.Action("Pay", "Orders")" class="w3-button w3-black">Pay<i class="fa fa-shopping-cart"></i></a></button>
+            
         }
     </div>
 </section>
 
-}

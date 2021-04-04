@@ -2,7 +2,6 @@ using System.Web.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using PizzeriaTNAI.Entities.Models;
-using PizzeriaTNAI.UI.Models;
 
 namespace PizzeriaTNAI.Entities.Migrations
 {
@@ -22,23 +21,38 @@ namespace PizzeriaTNAI.Entities.Migrations
         {
             if (!context.Products.Any())
             {
-                var hawajska = new Product
+                var hawaiian = new Product
                 {
-                    Name = "Pizza Hawajska",
+                    Name = "Hawaiian Pizza",
                     Price = 25m,
-                    Description = "Pizza z ananasem i szynk¹",
+                    Description = "Pizza with ham and pineapple",
                     PictureUrl = "https://www.lifeandmore.pl/files/Image/smakiswiata/pizza_hawajska.jpg"
                 };
                 var pepperoni = new Product
                 {
-                    Name = "Pizza Pepperoni",
+                    Name = "Pepperoni Pizza",
                     Price = 26.50m,
-                    Description = "Pizza z pepperoni i cebul¹",
+                    Description = "Pizza with salami, pepperoni peppers and onions",
                     PictureUrl = "https://thumbs.dreamstime.com/z/pepperoni-pizza-30402134.jpg"
                 };
-
-                context.Products.Add(hawajska);
+                var capriciosa = new Product
+                {
+                    Name = "Caprriciosa Pizza",
+                    Price = 23.50m,
+                    Description = "Pizza with mozarella, ham and mushrooms",
+                    PictureUrl = "https://images.telepizza.com/vol/pl/images/content/productos/p2ca_c.png"
+                };
+                var vega = new Product
+                {
+                    Name = "Vegan Pizza",
+                    Price = 16.50m,
+                    Description = "Pizza with ricotta cheese, mozarella, spinach and salad tomatos.",
+                    PictureUrl = "https://vega.sklep.pl/media/catalog/product/cache/11/image/40ff0ebde3677abe38d507cf99819010/2/2/22._cadru.jpg"
+                };
+                context.Products.Add(hawaiian);
                 context.Products.Add(pepperoni);
+                context.Products.Add(capriciosa);
+                context.Products.Add(vega);
                 context.SaveChanges();
             }
             // TODO: nie wiem jak zseedowaæ usera, przy odpalaniu Seed'a wyrzuca ze The entity type ApplicationUser is not part of the model for the current context

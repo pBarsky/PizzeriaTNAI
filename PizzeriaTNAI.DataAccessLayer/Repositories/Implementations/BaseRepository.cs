@@ -9,7 +9,7 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
 {
     public class BaseRepository
     {
-        protected AppDbContext Context;
+        protected readonly AppDbContext Context;
 
         internal BaseRepository()
         {
@@ -17,4 +17,3 @@ namespace PizzeriaTNAI.DataAccessLayer.Repositories.Implementations
         }
     }
 }
-

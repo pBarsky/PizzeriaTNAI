@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -6,7 +7,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using PizzeriaTNAI.Entities;
-using PizzeriaTNAI.UI.Models;
+using PizzeriaTNAI.Entities.Identity;
 
 namespace PizzeriaTNAI.UI
 {
@@ -30,7 +31,7 @@ namespace PizzeriaTNAI.UI
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.
-                    // This is a security feature which is used when you change a password or add an external login to your account.  
+                    // This is a security feature which is used when you change a password or add an external login to your account.
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
@@ -55,15 +56,16 @@ namespace PizzeriaTNAI.UI
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2989152081138694",
+               appSecret: ConfigurationManager.AppSettings["facebookApiKey"]
+               );
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "913967478848-m8ag385cflp0vbjchvk1v41mcqip9u9l.apps.googleusercontent.com",
+                ClientSecret = ConfigurationManager.AppSettings["oAuthApiKey"]
+            });
         }
     }
 }

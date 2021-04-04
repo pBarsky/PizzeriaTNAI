@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.SessionState;
 
-namespace PizzeriaTNAI.BusinessLogic.Session
+namespace BusinessLogic.Session
 {
     public class SessionManager : ISessionManager
     {
@@ -17,6 +13,11 @@ namespace PizzeriaTNAI.BusinessLogic.Session
             _session = HttpContext.Current.Session;
         }
 
+        public void Abandon()
+        {
+            _session.Abandon();
+        }
+
         public T Get<T>(string key)
         {
             return (T)_session[key];
@@ -25,11 +26,6 @@ namespace PizzeriaTNAI.BusinessLogic.Session
         public void Set<T>(string name, T value)
         {
             _session[name] = value;
-        }
-
-        public void Abandon()
-        {
-            _session.Abandon();
         }
 
         public T TryGet<T>(string key)

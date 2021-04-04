@@ -14,9 +14,17 @@ namespace PizzeriaTNAI.UI
     public static class UnityMvcActivator
     {
         /// <summary>
+        /// Disposes the Unity container when the application is shut down.
+        /// </summary>
+        public static void Shutdown()
+        {
+            UnityConfig.Container.Dispose();
+        }
+
+        /// <summary>
         /// Integrates Unity when the application starts.
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             FilterProviders.Providers.Remove(FilterProviders.Providers.OfType<FilterAttributeFilterProvider>().First());
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(UnityConfig.Container));
@@ -25,14 +33,6 @@ namespace PizzeriaTNAI.UI
 
             // TODO: Uncomment if you want to use PerRequestLifetimeManager
             // Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(UnityPerRequestHttpModule));
-        }
-
-        /// <summary>
-        /// Disposes the Unity container when the application is shut down.
-        /// </summary>
-        public static void Shutdown()
-        {
-            UnityConfig.Container.Dispose();
         }
     }
 }

@@ -1,42 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PizzeriaTNAI.BusinessLogic.Session;
+using BusinessLogic.Session;
 using PizzeriaTNAI.DataAccessLayer.Repositories.Interfaces;
 using PizzeriaTNAI.Entities.Models;
 
-namespace PizzeriaTNAI.BusinessLogic.Services.SBasket
+namespace BusinessLogic.Services.SBasket
 {
     public class BasketService : IBasketService
     {
-        private IProductRepository _productRepository;
-        private ISessionManager _sessionManager;
-        public const string SessionKey = "BasketEntry";
+        private const string SessionKey = "BasketEntry";
+        private readonly IProductRepository _productRepository;
+        private readonly ISessionManager _sessionManager;
 
-        public BasketService(SessionManager sessionManager, IProductRepository productRepository)
+        public BasketService(ISessionManager sessionManager, IProductRepository productRepository)
         {
             _sessionManager = sessionManager;
             _productRepository = productRepository;
         }
 
-        public List<BasketEntry> GetBasket()
-        {
-            List<BasketEntry> basketList;
-
-            if (_sessionManager.Get<List<BasketEntry>>(SessionKey) == null)
-            {
-                basketList = new List<BasketEntry>();
-            }
-            else
-            {
-                basketList = _sessionManager.Get<List<BasketEntry>>(SessionKey) as List<BasketEntry>;
-            }
-            return basketList;
-        }
-
         public void AddToBasket(int productId)
         {
-
             var basket = GetBasket();
             var basketEntries = basket.Find(k => k.Product.ProductId == productId);
 
@@ -60,6 +44,38 @@ namespace PizzeriaTNAI.BusinessLogic.Services.SBasket
             _sessionManager.Set(SessionKey, basket);
         }
 
+        public void EmptyBasket()
+        {
+            _sessionManager.Set<List<BasketEntry>>(SessionKey, null);
+        }
+
+        public List<BasketEntry> GetBasket()
+        {
+            List<BasketEntry> basketList;
+
+            if (_sessionManager.Get<List<BasketEntry>>(SessionKey) == null)
+            {
+                basketList = new List<BasketEntry>();
+            }
+            else
+            {
+                basketList = _sessionManager.Get<List<BasketEntry>>(SessionKey) as List<BasketEntry>;
+            }
+            return basketList;
+        }
+
+        public int GetBasketAmount()
+        {
+            var basket = GetBasket();
+            int amount = basket.Sum(k => k.Amount);
+            return amount;
+        }
+
+        public decimal GetBasketValue()
+        {
+            var basket = GetBasket();
+            return basket.Sum(k => k.Amount * k.Product.Price);
+        }
 
         public void RemoveBasket(int productId)
         {
@@ -70,24 +86,6 @@ namespace PizzeriaTNAI.BusinessLogic.Services.SBasket
             {
                 basket.Remove(basketEntry);
             }
-        }
-
-        public decimal GetBasketValue()
-        {
-            var basket = GetBasket();
-            return basket.Sum(k => k.Amount * k.Product.Price);
-        }
-
-        public int GetBasketAmount()
-        {
-            var basket = GetBasket();
-            int amount = basket.Sum(k => k.Amount);
-            return amount;
-        }
-
-        public void EmptyBasket()
-        {
-            _sessionManager.Set<List<BasketEntry>>(SessionKey, null);
         }
     }
 }

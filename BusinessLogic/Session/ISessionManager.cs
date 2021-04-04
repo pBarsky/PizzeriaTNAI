@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PizzeriaTNAI.BusinessLogic.Session
+﻿namespace BusinessLogic.Session
 {
     public interface ISessionManager
     {
-        T Get<T>(string key);
-        void Set<T>(string name, T value);
         void Abandon();
+
+        T Get<T>(string key);
+
+        void Set<T>(string name, T value);
+
         T TryGet<T>(string key);
     }
 }

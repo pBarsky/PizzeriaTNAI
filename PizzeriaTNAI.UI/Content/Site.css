@@ -1,6 +1,13 @@
-﻿body {
+﻿
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,10 +29,12 @@ select,
 textarea {
     max-width: 280px;
 }
+
 .pizza-img {
     height: 250px;
     width: 230px;
 }
+
 .basket-circle {
     display: block;
     background-color: cornsilk;
@@ -40,15 +49,18 @@ textarea {
 .pizza-orders-details {
     text-align: center;
 }
+
 .basket-img {
     width: 50px;
     height: 50px;
 }
+
 .navbar-inverse {
     /* background-color: #4a26fd !important; */
-    background-color: #E3121D!important;
+    background-color: #E3121D !important;
     height: 20px
 }
+
 .text-white {
     color: white !important;
 }
@@ -56,11 +68,78 @@ textarea {
 .basket {
     float: right;
 }
+
 .navbar-inverse .navbar-nav > li > a {
     color: #FFFFFF;
 }
+
 @media (max-width: 768px) {
     .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-        background-color: #B00020 !important;
+        background-color: #E3121D !important;
     }
+}
+
+.menu-items {
+    text-align: center;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.pizza-price {
+    color: rgb(49, 49, 49);
+    font-size: 1.2rem;
+    font-family: DINCondensed;
+    font-stretch: condensed;
+    font-weight: normal;
+    white-space: nowrap;
+    margin: 0px 1rem 0px 0px;
+    padding: 0px;
+}
+
+
+.order-details-table th, td {
+    padding: 0 15px;
+}
+
+.main-Card {
+    background-image: url("https://tadar.pl/images/_news_shot/pizza_noz.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    color: aliceblue;
+}
+
+.navbar-nav > li:hover {
+    background-color: #B00020 !important;
+}
+
+#TotalPriceValue {
+    font-weight: 900;
+}
+
+.about {
+    position: relative;
+}
+
+.about-bg {
+    position: absolute;
+    max-width: 50vw;
+    max-height: 70vh;
+}
+
+.about-data {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.footer {
+    position:;
+    width: inherit;
+    bottom: 0;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
 }

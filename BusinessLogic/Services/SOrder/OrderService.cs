@@ -3,53 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PizzeriaTNAI.BusinessLogic.Services.SBasket;
-using PizzeriaTNAI.BusinessLogic.Session;
+using BusinessLogic.Services.SBasket;
+using BusinessLogic.Session;
 using PizzeriaTNAI.DataAccessLayer.Repositories.Implementations;
 using PizzeriaTNAI.DataAccessLayer.Repositories.Interfaces;
 using PizzeriaTNAI.Entities.Models;
 
 namespace BusinessLogic.Services.SOrder
 {
-
     public class OrderService : IOrderService
     {
         private readonly IBasketService _basketMenager;
-        public SessionManager SessionMenager { get; }
         private readonly IOrderRepository _orderRepository;
+
         public OrderService(IOrderRepository orderRepository, IProductRepository productRepository)
         {
             _orderRepository = new OrderRepository();
             SessionMenager = new SessionManager();
             _basketMenager = new BasketService(SessionMenager, productRepository);
         }
-        public bool SaveOrder(Order newOrder, string userId)
+
+        public SessionManager SessionMenager { get; }
+
+        public Task<bool> DeleteOrderAsync(int id)
         {
-            var basket = _basketMenager.GetBasket();
-            newOrder.DateOfCreation = DateTime.Now;
-            newOrder.UserId = userId;
-
-            if (newOrder.Items == null)
-            {
-                newOrder.Items = new List<OrderItem>();
-            }
-            var basketValue = 0m;
-
-            foreach (var item in basket)
-            {
-                var newOrderItem = new OrderItem()
-                {
-                    ProductId = item.Product.ProductId,
-                    Amount = item.Amount,
-                    Price = item.Price
-                };
-                basketValue += (item.Amount * item.Price);
-                newOrder.Items.Add(newOrderItem);
-            }
-            newOrder.OverallPrice = basketValue;
-
-            var result = Task.Run(() => _orderRepository.SaveOrderAsync(newOrder)).Result;
-            return result;
+            return _orderRepository.DeleteOrderAsync(id);
         }
 
         public Task<Order> GetOrderAsync(int id)
@@ -62,16 +40,44 @@ namespace BusinessLogic.Services.SOrder
             return _orderRepository.GetOrdersAsync();
         }
 
-        public Task<bool> SaveOrderAsync(Order order)
+        public bool SaveOrder(Order newOrder, string userId)
         {
-            return _orderRepository.SaveOrderAsync(order);
+            return Task.FromResult(SaveOrderAsync(newOrder, userId)).Result.Result;
         }
 
-        public Task<bool> DeleteOrderAsync(int id)
+        public async Task<bool> SaveOrderAsync(Order order, string userId)
         {
-            return _orderRepository.DeleteOrderAsync(id);
+            order.DateOfCreation = DateTime.Now;
+            order.UserId = userId;
+
+            if (order.Items == null)
+            {
+                order.Items = new List<OrderItem>();
+            }
+
+            MakeOrderFromBasket(order);
+
+            var result = await _orderRepository.SaveOrderAsync(order);
+            return result;
         }
 
+        private void MakeOrderFromBasket(Order order)
+        {
+            var basketValue = 0m;
+            var basket = _basketMenager.GetBasket();
+            foreach (var item in basket)
+            {
+                var orderItem = new OrderItem()
+                {
+                    ProductId = item.Product.ProductId,
+                    Amount = item.Amount,
+                    Price = item.Price
+                };
+                basketValue += (item.Amount * item.Price);
+                order.Items.Add(orderItem);
+            }
 
+            order.OverallPrice = basketValue;
+        }
     }
 }

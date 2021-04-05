@@ -206,6 +206,7 @@ namespace PizzeriaTNAI.UI.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.Login = "active";
             return View();
         }
 
@@ -216,6 +217,8 @@ namespace PizzeriaTNAI.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            ViewBag.Login = "active";
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -258,6 +261,7 @@ namespace PizzeriaTNAI.UI.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Register = "active";
             return View();
         }
 
@@ -268,6 +272,7 @@ namespace PizzeriaTNAI.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ViewBag.Register = "active";
             if (!ModelState.IsValid) return View(model);
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email, AddressData = new UserAddressData() };
             var result = await UserManager.CreateAsync(user, model.Password);

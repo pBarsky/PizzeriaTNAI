@@ -3,21 +3,21 @@
 }
 
     <div class="jumbotron main-Card">
-        <h1><b>Pizzeerria</b></h1>
+        <h1 class="display-2"><b>Pizzeerria</b></h1>
         <p class="lead">Welcome to our pizzeria</p>
-        <p class="btn btn-default btn-lg">@Html.ActionLink("Check out our Menu", "Menu", "Products")</p>
+        @Html.ActionLink("Check out our Menu", "Menu", "Products", null, new { @class = "btn btn-lg btn-light text-dark", role="button" })
 
     </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mr-auto">
         <h2>Fast Delivery</h2>
         <p>
             VERY FAAAAAAAAAAAAAAAAAAAAASSSSSSTTTTT
             ONLY 30 MINUTES!!1!
         </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 ml-auto">
         <h2>TASTY PIAZZA</h2>
         <p>Can't tell if its gone bad if its all covered in cheeese</p>
     </div>

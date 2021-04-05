@@ -8,44 +8,53 @@
     <div>
         <h2>Basket</h2>
     </div>
-    <table>
         @if (Model.BasketItems != null && Model.BasketItems.Count > 0)
         {
-            foreach (var basketItem in Model.BasketItems)
+            <ul class="list-group">
+
+            @foreach (var basketItem in Model.BasketItems)
             {
-                <tr id="BasketLine-@basketItem.Product.ProductId">
+                <li class="list-group-item" id="BasketLine-@basketItem.Product.ProductId">
 
+                    <div class="card">
+                        <div class="card-header">
+                            @basketItem.Product.Name
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                Amount: <span id="@basketItem.Product.ProductId">@basketItem.Amount</span>
+                            </div>
+                            <div>
+                                Price: @String.Format("{0:0.##}", basketItem.Price) zł
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                            @using (Html.BeginForm("RemoveFromBasket", "Basket"))
+                            {
+                                @Html.Hidden("ProductId", basketItem.Product.ProductId)
+                                <input class="btn btn-sm btn-danger"
+                                       type="submit" value="Delete" />
+                            }
+                        </div>
+                    </div>
                     <td>
-                        @basketItem.Product.Name
-                    </td>
-                    <td>
-                        Amount: <span id="@basketItem.Product.ProductId">@basketItem.Amount</span>
-                    </td>
-                    <td>
-                        <img class="pizza-img" src="@basketItem.Product.PictureUrl" />
-                    </td>
-                    <td>
-                        @String.Format("{0:0.##}", basketItem.Price) zł
-                    </td>
-                    <td>
-                        @using (Html.BeginForm("RemoveFromBasket", "Basket"))
-                        {
-                            @Html.Hidden("ProductId", basketItem.Product.ProductId)
-                            <input class="btn btn-sm btn-warning"
-                                   type="submit" value="Delete" />
-                        }
+                        
                     </td>
 
-                </tr>
+                </li>
             }
+            </ul>
+
         }
         else
         {
-            <tr id="Basket-empty-message">
-                <td>Your basket is empty </td>
-            </tr>
+            <div class="card">
+                <div class="card-body">
+                    Your basket is empty
+                </div>
+            </div>
         }
-    </table>
     <div>
        
        

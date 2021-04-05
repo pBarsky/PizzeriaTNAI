@@ -1,48 +1,43 @@
-﻿
-html, body {
+﻿html, body {
     height: 100%;
 }
 
 body {
     min-height: 100%;
-    padding-top: 50px;
-    padding-bottom: 20px;
     font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
+
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 .pizza-img {
     height: 250px;
-    width: 230px;
+    width: 250px;
 }
 
 .basket-circle {
-    display: block;
+    display: inline-block;
     background-color: cornsilk;
     width: 1em;
+    font-size: 14px;
+    -ms-border-radius: 90px;
     border-radius: 90px;
     position: relative;
-    bottom: 38px;
-    left: 25px;
+    bottom: -6px;
+    left: -7px;
     text-align: center;
 }
 
@@ -51,22 +46,17 @@ textarea {
 }
 
 .basket-img {
-    width: 50px;
-    height: 50px;
+    width: 16px;
+    height: 16px;
 }
 
 .navbar-inverse {
-    /* background-color: #4a26fd !important; */
     background-color: #E3121D !important;
     height: 20px
 }
 
 .text-white {
     color: white !important;
-}
-
-.basket {
-    float: right;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -88,53 +78,39 @@ a:visited {
 }
 
 .pizza-price {
-    color: rgb(49, 49, 49);
     font-size: 1.2rem;
-    font-family: DINCondensed;
-    font-stretch: condensed;
-    font-weight: normal;
     white-space: nowrap;
-    margin: 0px 1rem 0px 0px;
-    padding: 0px;
 }
-
 
 .order-details-table th, td {
     padding: 0 15px;
 }
 
 .main-Card {
-    background-image: url("https://tadar.pl/images/_news_shot/pizza_noz.jpg");
+    background-image: url("/Content/Images/pizza_noz.jpg");
     background-size: auto;
     background-repeat: no-repeat;
     background-position: 100%;
     color: aliceblue;
 }
 
-.navbar-nav > li:hover {
-    background-color: #B00020 !important;
-}
 
+.google-map {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 #TotalPriceValue {
     font-weight: 900;
 }
 
-.about {
-    position: relative;
-}
 
 .about-bg {
-    position: absolute;
+    float: right;
     max-width: 50vw;
     max-height: 70vh;
 }
 
-.about-data {
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 
 .footer {
     position:;

@@ -1,26 +1,35 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-<div class="container">
-    <div class="row"> 
-        <div class="col-2">
-            <address>
-                Pizzaria TNAI<br />
-                Torun, 31 <br/>
-                <abbr title="Phone">P:</abbr>
-                123.555.0100
-            </address>
+<h2>@ViewBag.Message</h2>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Address</div>
+            <div class="card-body">
+                <address>
+                    Pizzaria TNAI<br />
+                    Torun, 31 <br />
+                </address>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header">Contact info</div>
+            <div class="card-body">
+                <address>
+                    <p class="text-muted">These emails actually do not work, we did not set up an email service</p>
+                    <abbr title="Phone">P:</abbr>
+                    123.555.0100
+                    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@PizzariaTNAI.com</a><br />
+                    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@PizzariaTNAI.com</a><br />
+                    <strong>Chef:</strong> <a href="mailto:Marketing@example.com">Chief@PizzariaTNAI.com</a>
+                </address>
 
-            <address>
-                <strong>Support:</strong> <a href="mailto:Support@example.com">Support@PizzariaTNAI.com</a><br/>
-                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@PizzariaTNAI.com</a><br />
-                <strong>Chef:</strong> <a href="mailto:Marketing@example.com">Chief@PizzariaTNAI.com</a>
-            </address>
+            </div>
+
         </div>
-        <div class="col-2">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2018.6570525762934!2d18.60574243668986!3d53.0095524137451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703351c327069df%3A0xc205dbf255a6f325!2s%C5%BBywe%20Muzeum%20Piernika!5e0!3m2!1spl!2spl!4v1593009709745!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
+    </div>
+    <div class="col-md-8">
+        <iframe class="google-map"src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2018.6570525762934!2d18.60574243668986!3d53.0095524137451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703351c327069df%3A0xc205dbf255a6f325!2s%C5%BBywe%20Muzeum%20Piernika!5e0!3m2!1spl!2spl!4v1593009709745!5m2!1spl!2spl" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>
 </div>

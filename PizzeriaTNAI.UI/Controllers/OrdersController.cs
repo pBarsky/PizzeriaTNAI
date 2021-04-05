@@ -63,6 +63,7 @@ namespace PizzeriaTNAI.UI.Controllers
         public ActionResult Index()
         {
             var list = Task.Run(() => _orderService.GetOrdersAsync()).Result;
+            ViewBag.Orders = "active";
             return View(list);
         }
 

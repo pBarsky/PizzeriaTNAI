@@ -123,6 +123,7 @@ namespace PizzeriaTNAI.UI.Controllers
         public ActionResult Menu()
         {
             var products = Task.Run(() => _productService.GetProductsAsync()).Result;
+            ViewBag.Menu = "active";
             return View(products);
         }
     }

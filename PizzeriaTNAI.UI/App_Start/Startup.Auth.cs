@@ -56,14 +56,14 @@ namespace PizzeriaTNAI.UI
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "2989152081138694",
-               appSecret: ConfigurationManager.AppSettings["facebookApiKey"]
-               );
+            //app.UseFacebookAuthentication(
+            //   appId: "2989152081138694",
+            //   appSecret: ConfigurationManager.AppSettings["facebookApiKey"]
+            //   );
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "913967478848-m8ag385cflp0vbjchvk1v41mcqip9u9l.apps.googleusercontent.com",
+                ClientId = ConfigurationManager.AppSettings["oAuthClientId"],
                 ClientSecret = ConfigurationManager.AppSettings["oAuthApiKey"]
             });
         }

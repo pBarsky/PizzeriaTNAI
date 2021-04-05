@@ -114,7 +114,6 @@ namespace PizzeriaTNAI.UI
             // Create a Web transport for sending email.
             var apiKey = ConfigurationManager.AppSettings["sendGridApiKey"];
             var client = new SendGridClient(apiKey);
-
             return client.SendEmailAsync(myMessage);
         }
     }

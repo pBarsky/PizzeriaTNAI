@@ -275,7 +275,7 @@ namespace PizzeriaTNAI.UI.Controllers
             {
                 var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: Request.Url?.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "<h1>It appears you have registered in <b>PizzeriaTNAI</b> service.</h1> <p>Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a></p>. <p>In case it was not you that registered, please ignore this e-mail.</p>");
                 //return RedirectToAction("Index", "Home");
                 return View("DisplayEmail");
             }
